@@ -64,6 +64,11 @@ export class HeroesService{
         return this.heroes;
     }
 
+    // La función para regresar un héroe en particular
+    public getHeroe(idx: string){
+      return this.heroes[idx];
+    }
+
 }
 
 export interface Heroe{
