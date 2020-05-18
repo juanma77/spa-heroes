@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HeroesService } from 'src/app/services/heroes.service';
 
 @Component({
   selector: 'app-searcher',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearcherComponent implements OnInit {
 
-  constructor() { }
+  public heroes: any [] = [];
+  public termino: string;
+
+  constructor(private activatedRoute:ActivatedRoute, private _heroesService: HeroesService){
+  
+  }
 
   ngOnInit() {
+
+    this.activatedRoute.params.subscribe(params =>{
+      console.log(params['termino']); // Recibimos el termino desde el navbar component
+
+      // Para que nuestra variable local termino sea igual al termino que obtenemos
+      this.termino = params['termino'];
+
+      // Obtenemos un héroe en particular con un id en particular
+      this.heroes = this._heroesService.buscarHeroes(params['termino']);
+
+      // Aquí ya tenemos el heroe que coincide con el termino
+      console.log(this.heroes); 
+
+    });
   }
 
 }
