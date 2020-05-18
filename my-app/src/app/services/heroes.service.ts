@@ -69,6 +69,26 @@ export class HeroesService{
       return this.heroes[idx];
     }
 
+    // La función es para buscar un término en la barra de búsqueda
+    public buscarHeroes(termino: string): Heroe[]{
+      let heroesArr: Heroe[] = [];
+      termino = termino.toLowerCase();
+
+      for(let heroe of this.heroes){
+        let nombre = heroe.nombre.toLowerCase();
+
+        // Con indexOf() regresa el primer índice en el que se puede encontrar un elemento en el array; buscamos un string dentro de "nombre"
+        if(nombre.indexOf(termino) >= 0){ // Si existe el termino
+          heroesArr.push(heroe)
+          
+        }
+      }
+
+      return heroesArr; 
+
+
+    }
+
 }
 
 export interface Heroe{
