@@ -1,20 +1,12 @@
 <h1>Héroes de <small> Marvel y DC</small> </h1>
 <hr>
 
+<!-- Este; heroes.component es el componente padre; su hijo es el componente
+app-heroe-card component -->
 <div class="card-columns">
-    <div class="card animated fadeIn fast" *ngFor="let heroe of heroes; let i = index">
-        <img [src]="heroe.img" class="card-img-top" [alt]="heroe.nombre">
-        <div class="card-body">
-            <h5 class="card-title">{{ heroe.nombre }}</h5>
-            <p class="card-text">{{ heroe.bio }}</p>
-            <p class="card-text"><small class="text-muted">{{ heroe.aparicion }}</small></p>
 
-            <!-- Hacemos el enlace para la página de los detalles de los héroes mediante el evento click -->
-            <button (click)="verHeroe(i)" type="button" class="btn btn-outline-primary btn-block">Ver más...</button>
-
-            <!-- Una forma de hacer el enlace para la página de los detalles de los héroes -->
-            <!-- <a [routerLink]="['/heroe', i]" class="btn btn-outline-primary btn-block"></a> -->
-
-        </div>
-    </div>
+    <!-- Con el Input que pusimos en el componente (hijo) app-heroe-card; podemos indicar que desde el componente
+    actual, heroes.component (padre), vamos a mandarle un argumento al hijo con el mismo nombre que tiene la propiedad alla (heroe): el [heroe] puede tener cualquier nombre; "heroe" es el que creamos en el for  -->
+    <app-heroe-card [heroe]="heroe" [index]="i" *ngFor="let heroe of heroes; let i = index"></app-heroe-card>
+    
 </div>    
