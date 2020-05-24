@@ -7,6 +7,7 @@ app-heroe-card component -->
 
     <!-- Con el Input que pusimos en el componente (hijo) app-heroe-card; podemos indicar que desde el componente
     actual, heroes.component (padre), vamos a mandarle un argumento al hijo con el mismo nombre que tiene la propiedad alla (heroe): el [heroe] puede tener cualquier nombre; "heroe" es el que creamos en el for  -->
-    <app-heroe-card [heroe]="heroe" [index]="i" *ngFor="let heroe of heroes; let i = index"></app-heroe-card>
+    <!-- Con el Output debemos poner en este componente padre la propiedad que recibimos desde el componente hijo app-heroe-card entre paréntesis; poner el "$" a fuerzas en este caso -->
+    <app-heroe-card (heroeSeleccionado)="verHeroe($event)" [heroe]="heroe" [index]="i" *ngFor="let heroe of heroes; let i = index"></app-heroe-card>
     
 </div>    
