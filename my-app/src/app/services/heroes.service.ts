@@ -74,16 +74,25 @@ export class HeroesService{
       let heroesArr: Heroe[] = [];
       termino = termino.toLowerCase();
 
-      for(let heroe of this.heroes){
+      for(let i = 0; i < this.heroes.length; i++){
+        // let nombre = heroe.nombre.toLowerCase();
+
+        // Obtenemos la posición de un elemento del arreglo
+        let heroe = this.heroes[i];
+
+        // Para pasar todo a letras minúsculas
         let nombre = heroe.nombre.toLowerCase();
 
         // Con indexOf() regresa el primer índice en el que se puede encontrar un elemento en el array; buscamos un string dentro de "nombre"
         if(nombre.indexOf(termino) >= 0){ // Si existe el termino
-          heroesArr.push(heroe)
+          // El "heroe" va a tener la posición i del arreglo
+          heroe.idx = i;
+
+          // Agregamos el heroe al arreglo 
+          heroesArr.push(heroe); 
           
         }
       }
-
       return heroesArr; 
     }
 }
@@ -93,5 +102,6 @@ export interface Heroe{
     bio: string; 
     img: string; 
     aparicion: string; 
-    casa: string; 
+    casa: string;
+    idx?: number; // Este es opcional pues solo lo usamos en la búsqueda del término
 }

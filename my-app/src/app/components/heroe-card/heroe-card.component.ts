@@ -24,10 +24,10 @@ export class HeroeCardComponent implements OnInit {
 
   public verHeroe(){
     // console.log(this.index);
-    // this.route.navigate(['/heroe',this.index]);
+    this.route.navigate(['/heroe',this.index]);
 
-    // Debemos de emitir el evento con la propiedad que vamos a pasar desde el componente hijo al padre 
-    this.heroeSeleccionado.emit(this.index);
+    // Debemos de emitir el evento con la propiedad que vamos a pasar desde el componente hijo al padre siempre que usamos el Output 
+    // this.heroeSeleccionado.emit(this.index);
 
   }
 }

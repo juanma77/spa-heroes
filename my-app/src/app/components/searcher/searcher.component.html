@@ -10,5 +10,7 @@
 </div>
 
 <div class="card-columns">
-    <app-heroe-card [heroe]="heroe" [index]="i" *ngFor="let heroe of heroes; let i = index"></app-heroe-card>
+    <!-- El "[index] = heroe.idx" debe ir puesto que estamos refiriéndonos a la propiedad idx que creamos
+    en el servicio heroes-service-->
+    <app-heroe-card [heroe]="heroe" [index]="heroe.idx" *ngFor="let heroe of heroes; let i = index"></app-heroe-card>
 </div>    
